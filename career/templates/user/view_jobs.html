@@ -1,0 +1,48 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="text-center text-primary mb-4">Available Job Openings</h3>
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Job Title</th>
+        <th>Career</th>
+        <th>Qualifications</th>
+          <th>Company</th>
+        <th>Location</th>
+        <th>Posted On</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ job.title }}</td>
+        <td>{{ job.career.name }}</td>
+        <td>{{ job.qualifications }}</td>
+          <td>{{ job.recruiter.recruiterprofile.company_name }}</td>
+
+        <td>{{ job.location }}</td>
+        <td>{{ job.posted_on|date:"M d, Y" }}</td>
+ <td>
+    {% if job in applied_jobs %}
+      <button class="btn btn-success btn-sm" disabled>Applied</button>
+    {% else %}
+      <form method="post" action="{% url 'apply_job' job.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-sm">Apply</button>
+      </form>
+    {% endif %}
+  </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="text-center text-muted">No job postings available yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

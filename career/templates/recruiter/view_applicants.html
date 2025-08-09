@@ -1,0 +1,33 @@
+{% extends 'recruiter/recruiter_dash.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="text-primary text-center mb-4">Job Applications Received</h3>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Applicant</th>
+        <th>Job Title</th>
+        <th>Career</th>
+        <th>Applied On</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for application in applications %}
+<tr>
+  <td>{{ forloop.counter }}</td>
+  <td>{{ application.user.username }}</td>
+  <td>{{ application.job.title }}</td>
+  <td>{{ application.job.career.name }}</td>
+  <td>{{ application.applied_on }}</td>
+</tr>
+{% empty %}
+<tr>
+  <td colspan="5" class="text-center text-muted">No applications yet.</td>
+</tr>
+{% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

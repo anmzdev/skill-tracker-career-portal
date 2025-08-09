@@ -1,0 +1,38 @@
+{% extends 'admin/admin_dash.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="text-center text-primary mb-4">All Job Postings by Recruiters</h3>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>#</th>
+        <th>Job Title</th>
+        <th>Career</th>
+        <th>Recruiter</th>
+        <th>Company</th>
+        <th>Location</th>
+        <th>Posted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for job in jobs %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ job.title }}</td>
+        <td>{{ job.career.name }}</td>
+        <td>{{ job.recruiter.username }}</td>
+<td>{{ job.recruiter.recruiterprofile.company_name }}</td>
+
+        <td>{{ job.location }}</td>
+        <td>{{ job.posted_on|date:"M d, Y" }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7" class="text-center text-muted">No job postings available.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

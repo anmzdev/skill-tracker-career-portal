@@ -1,0 +1,13 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow-sm p-4 text-center">
+    <h3 class="text-success fw-bold">🎉 You have already taken the quiz!</h3>
+    <p class="mt-3">Your suggested career is:</p>
+    <h5 class="fw-bold text-primary">{{ career.name }}</h5>
+    <p class="text-muted">{{ career.description }}</p>
+
+    <a href="{% url 'quiz' %}?retake=true" class="btn btn-outline-primary mt-4">Take Another Quiz</a>
+  </div>
+</div>
+{% endblock %}

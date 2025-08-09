@@ -1,0 +1,47 @@
+{% extends 'recruiter/recruiter_dash.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="text-primary mb-3 fw-bold text-center">Your Job Postings</h4>
+      {% if jobs %}
+        <a href="{% url 'post_job' %}" class="btn btn-success mb-3">Add Job</a>
+
+      <table class="table table-bordered table-striped">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Career</th>
+              <th>Qualifications</th>
+            <th>Location</th>
+            <th>Posted On</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for job in jobs %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ job.title }}</td>
+            <td>{{ job.career.name }}</td>
+              <td>{{ job.qualifications }}</td>
+            <td>{{ job.location }}</td>
+           <td>{{ job.posted_on|date:"Y-m-d H:i" }}</td>
+           <td>
+  <a href="{% url 'edit_job' job.id %}" class="btn btn-sm btn-warning">Edit</a>
+  <a href="{% url 'delete_job' job.id %}" class="btn btn-sm btn-danger">Delete</a>
+</td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p class="text-center text-muted">No jobs posted yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

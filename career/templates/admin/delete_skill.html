@@ -1,0 +1,12 @@
+{% extends 'admin/admin_dash.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h3 class="text-center text-danger mb-4">Delete Skill</h3>
+  <p>Are you sure you want to delete the skill: <strong>{{ skill.name }}</strong>?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'view_skill' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

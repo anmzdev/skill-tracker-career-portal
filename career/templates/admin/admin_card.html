@@ -1,0 +1,57 @@
+{% extends 'admin/admin_dash.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <div class="card-body">
+<!--      <h3 class="text-center text-primary mb-3">Welcome, {{ user.username }} 👋</h3>-->
+<!--      <p class="text-center text-muted mb-4">We're glad to have you back on <strong>Connect Plus</strong>!</p>-->
+
+      <div class="row text-center">
+          <h1>Dashboard</h1>
+<!--        <div class="col-md-3 mb-3">-->
+<!--          <div class="card border-2 bg-light text-white shadow">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">Career</h5>-->
+<!--              <p class="card-text text-muted">Discover your best-fit career path.</p>-->
+<!--              <a href="{% url 'add_career' %}" class="btn btn-primary btn-sm">Add</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <div class="col-md-3 mb-3">
+          <div class="card border-0 bg-white">
+            <div class="card-body">
+              <h5 class="card-title">Questions</h5>
+              <p class="card-text text-muted">View your skill progress.</p>
+              <a href="{% url 'add_question' %}" class="btn btn-success btn-sm">Add</a>
+                              <a href="{% url 'view_quiz' %}" class="btn btn-success btn-sm">View</a>
+
+            </div>
+          </div>
+        </div>
+
+<!--        <div class="col-md-3 mb-3">-->
+<!--          <div class="card border-0 bg-light text-white shadow">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title"></h5>-->
+<!--              <p class="card-text text-muted">Find jobs that match your profile.</p>-->
+<!--              <a href="{% url 'view_all_jobs' %}" class="btn btn-info btn-sm">Explore</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-md-3 mb-3">-->
+<!--          <div class="card border-0 bg-light text-white shadow">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">User List</h5>-->
+<!--              <p class="card-text text-muted">Track your job applications.</p>-->
+<!--              <a href="{% url 'user_list' %}" class="btn btn-dark btn-sm">View</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

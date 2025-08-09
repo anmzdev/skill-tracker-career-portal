@@ -1,0 +1,23 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="container mt-4">
+  <div class="card p-4 shadow-sm">
+    <h4 class="text-primary">{{ job.title }}</h4>
+    <p><strong>Company:</strong> {{ job.recruiter.company_name }}</p>
+    <p><strong>Career:</strong> {{ job.career.name }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Posted On:</strong> {{ job.posted_on|date:"M d, Y" }}</p>
+
+    <form method="post">
+      {% csrf_token %}
+      {% if already_applied %}
+        <button type="submit" name="cancel" class="btn btn-danger">Cancel Application</button>
+      {% else %}
+        <button type="submit" name="apply" class="btn btn-success">Apply for Job</button>
+      {% endif %}
+      <a href="{% url 'view_jobs' %}" class="btn btn-secondary">Back to Jobs</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

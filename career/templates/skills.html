@@ -1,0 +1,15 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="col-md-6 mx-auto">
+  <div class="card shadow p-4">
+    <h4 class="text-center text-primary fw-bold mb-3">Update Skill: {{ skill.name }}</h4>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-success w-100">Save</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+

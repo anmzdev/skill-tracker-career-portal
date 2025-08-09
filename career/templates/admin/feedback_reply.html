@@ -1,0 +1,21 @@
+{% extends 'admin/admin_dash.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h4 class="text-primary fw-bold mb-3">Reply to Feedback</h4>
+    <p><strong>User:</strong> {{ feedback.user.username }}</p>
+    <p><strong>Message:</strong> {{ feedback.message }}</p>
+
+    <form method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="reply">Reply</label>
+    <textarea class="form-control" name="reply" rows="3" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-success mt-2">Send Reply</button>
+</form>
+
+  </div>
+</div>
+{% endblock %}

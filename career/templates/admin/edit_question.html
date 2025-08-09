@@ -1,0 +1,21 @@
+{% extends 'admin/admin_dash.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="text-primary fw-bold text-center mb-4">Edit Quiz Question</h4>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success">Update Question</button>
+          <a href="{% url 'view_quiz' %}" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

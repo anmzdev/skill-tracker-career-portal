@@ -1,0 +1,40 @@
+{% extends 'user/user_dash.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="card-title text-primary fw-bold text-center">My Feedback History</h4>
+      <table class="table table-bordered mt-3">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Feedback</th>
+            <th>Date</th>
+            <th>Reply</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for feedback in feedbacks %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ feedback.message }}</td>
+            <td>{{ feedback.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+              {% if feedback.reply %}
+                <span class="text-success fw-bold">{{ feedback.reply }}</span>
+              {% else %}
+                <span class="text-muted">Not yet replied</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="4" class="text-center">You haven't submitted any feedback yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

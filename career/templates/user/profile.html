@@ -1,0 +1,46 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center text-primary fw-bold mb-4">
+      <i class="bi bi-building me-2"></i>Profile
+    </h3>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <ul class="list-group list-group-flush fs-6">
+           <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold text-secondary">Name:</span>
+            <span>{{ profile.name }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold text-secondary">Gender:</span>
+            <span>{{ profile.gender }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold text-secondary">Education:</span>
+            <span>{{ profile.education_level }}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold text-secondary">Current Status:</span>
+            <span>{{ profile.current_status }}</span>
+          </li>
+              <li class="list-group-item d-flex justify-content-between">
+            <span class="fw-semibold text-secondary">Location:</span>
+            <span>{{ profile.location }}</span>
+          </li>
+        </ul>
+
+           <div class="text-center mt-4">
+          <a href="{% url 'profile_edit' %}" class="btn btn-success px-4">
+            <i class="bi bi-pencil-square me-1"></i> Edit Profile
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+{% endblock %}
+
+
+

@@ -1,0 +1,55 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <div class="card-body">
+      <h3 class="text-center text-primary mb-3">Welcome, {{ user.username }} 👋</h3>
+      <p class="text-center text-muted mb-4">We're glad to have you back on <strong>Connect Plus</strong>!</p>
+
+      <div class="row text-center">
+        <div class="col-md-3 mb-3">
+          <div class="card border-2 bg-light text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title">Take Quiz</h5>
+              <p class="card-text text-muted">Discover your best-fit career path.</p>
+              <a href="{% url 'quiz' %}" class="btn btn-primary btn-sm">Start Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card border-0 bg-light text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title">Dashboard</h5>
+              <p class="card-text text-muted">View your skill progress.</p>
+              <a href="{% url 'dashboard' %}" class="btn btn-success btn-sm">Go</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card border-0 bg-light text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title">Job Openings</h5>
+              <p class="card-text text-muted">Find jobs that match your profile.</p>
+              <a href="{% url 'view_all_jobs' %}" class="btn btn-info btn-sm">Explore</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <div class="card border-0 bg-light text-white shadow">
+            <div class="card-body">
+              <h5 class="card-title">My Applications</h5>
+              <p class="card-text text-muted">Track your job applications.</p>
+              <a href="{% url 'my_applications' %}" class="btn btn-dark btn-sm">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
+

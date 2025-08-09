@@ -1,0 +1,61 @@
+{% extends 'user/user_dash.html' %}
+{% block content %}
+<div class="col-md-10 mx-auto">
+  <div class="card shadow p-4">
+    <h3 class="text-center text-primary fw-bold">Your Dashboard</h3>
+    <hr>
+    {% if career %}
+      <div class="mb-4">
+  <h5 class="fw-bold">
+    {{ match_percentage }}% Match — Suggested Career: {{ career.name }}
+  </h5>
+  <p class="text-muted">{{ career.description }}</p>
+</div>
+
+
+      <h5 class="fw-bold">Your Skills</h5>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for skill in skills %}
+            <tr>
+              <td>{{ skill.name }}</td>
+              <td>
+                {% for sp in progress %}
+                  {% if sp.skill == skill %}
+                    {{ sp.progress }}%
+                    {% if sp.progress == 10 %}
+                      <span class="badge bg-secondary">Just Started</span>
+                    {% elif sp.progress == 40 %}
+                      <span class="badge bg-info text-dark">In Progress</span>
+                    {% elif sp.progress == 70 %}
+                      <span class="badge bg-warning text-dark">Practicing</span>
+                    {% elif sp.progress == 100 %}
+                      <span class="badge bg-success">Completed</span>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </td>
+              <td>
+                <a href="{% url 'update_skill' skill.id %}" class="btn btn-sm btn-outline-primary">Set Progress</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <div class="text-center mt-3">
+        <p class="text-muted">You haven't taken the quiz yet.</p>
+        <a href="{% url 'quiz' %}" class="btn btn-primary">Take Quiz</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+
+

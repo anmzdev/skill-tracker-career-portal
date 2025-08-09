@@ -1,0 +1,17 @@
+{% extends 'recruiter/recruiter_dash.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow p-4">
+    <h4 class="text-primary mb-3 fw-bold text-center">Post a New Job</h4>
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <div class="text-center">
+        <button type="submit" class="btn btn-success w-50">Post Job</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

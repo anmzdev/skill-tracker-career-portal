@@ -1,0 +1,42 @@
+{% extends 'admin/admin_dash.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="card shadow">
+    <div class="card-body">
+      <h4 class="card-title text-primary fw-bold">User Feedbacks</h4>
+      <table class="table table-bordered mt-3">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Reply</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for feedback in feedbacks %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ feedback.user.username }}</td>
+            <td>{{ feedback.message }}</td>
+            <td>{{ feedback.created_at|date:"Y-m-d H:i" }}</td>
+            <td>
+  {% if feedback.reply %}
+    <button class="btn btn-success btn-sm" disabled>Replied</button>
+  {% else %}
+    <a href="{% url 'feedback_reply' feedback.id %}" class="btn btn-primary btn-sm">Reply</a>
+  {% endif %}
+</td>
+
+          </tr>
+          {% empty %}
+          <tr><td colspan="5" class="text-center">No feedback submitted yet.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
